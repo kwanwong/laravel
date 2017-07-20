@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,6 +21,9 @@ Route::resource('users', 'UserController');
 Route::group(['namespace' => 'Auth'], function () {
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login');
+    Route::get('logout', 'LoginController@logout');
+    Route::get('register', 'RegisterController@showRegistrationForm');
+    Route::post('register', 'RegisterController@register');
 });
 
 // 授权重定向
@@ -28,7 +32,7 @@ Route::get('/redirect', function () {
         'client_id' => '3',
         'redirect_uri' => 'http://laravel.local.com/callback',
         'response_type' => 'code',
-        'scope' => '',
+        'scope' => '*',
     ]);
 
     return redirect('http://laravel.local.com/oauth/authorize?'.$query);

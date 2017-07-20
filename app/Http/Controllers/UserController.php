@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User as User;
 
 class UserController extends Controller
 {
@@ -13,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return 'GET | users';
+        $users = User::orderby('created_at', 'desc')->paginate(15);
+        return view('user.list', ['title' => '用户信息', 'users' => $users]);
     }
 
     /**
@@ -45,7 +47,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('user.profile', ['title' => '用户信息', 'user' => User::find($id)]);
     }
 
     /**

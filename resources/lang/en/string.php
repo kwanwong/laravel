@@ -9,4 +9,8 @@
 return [
     'login'    => 'Login',
     'register' => 'Register',
+    'logout'   => 'Logout',
+    'add'      => 'Add',
+    'add_user' => 'Add User',
+    'all' => 'All',
 ];
