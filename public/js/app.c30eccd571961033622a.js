@@ -4969,7 +4969,7 @@ exports.push([module.i, "\n.action-link[data-v-73f7470a] {\n    cursor: pointer;
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")();
-exports.push([module.i, "\nspan.red { color: red\n}\n", ""]);
+exports.push([module.i, "\nspan.red { color: lightseagreen\n}\n", ""]);
 
 /***/ }),
 
@@ -32659,17 +32659,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "vertical-align": "middle"
     }
-  }, [_vm._v("\n                        " + _vm._s(_vm.user.email) + "\n                    ")]), _vm._v(" "), _c('td', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.user.role) + "\n                    ")]), _vm._v(" "), _c('td', {
     staticStyle: {
       "vertical-align": "middle"
     }
-  }, [_c('code', [_vm._v(_vm._s(_vm.user.password))])]), _vm._v(" "), _c('td', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.user.email) + "\n                    ")]), _vm._v(" "), _c('td', {
     staticStyle: {
       "vertical-align": "middle"
     }
   }, [_vm._v("\n                        " + _vm._s(_vm.user.created_at) + "\n                    ")])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("ID")]), _vm._v(" "), _c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Email")]), _vm._v(" "), _c('th', [_vm._v("Password")]), _vm._v(" "), _c('th', [_vm._v("Created")])])])
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("ID")]), _vm._v(" "), _c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Role")]), _vm._v(" "), _c('th', [_vm._v("Email")]), _vm._v(" "), _c('th', [_vm._v("Created")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

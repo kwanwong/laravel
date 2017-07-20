@@ -14,8 +14,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Role</th>
                     <th>Email</th>
-                    <th>Password</th>
                     <th>Created</th>
                 </tr>
                 </thead>
@@ -32,14 +32,14 @@
                         {{ $user->name }}
                     </td>
 
+                    <!-- Role -->
+                    <td style="vertical-align: middle;">
+                        {{ $user->role }}
+                    </td>
+
                     <!-- Email -->
                     <td style="vertical-align: middle;">
                         {{ $user->email }}
-                    </td>
-
-                    <!-- Password -->
-                    <td style="vertical-align: middle;">
-                        <code>{{ $user->password }}</code>
                     </td>
 
                     <!-- Created at -->

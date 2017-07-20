@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'role', 'email', 'password',
     ];
 
     /**
@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'remember_token',
+        'password', 'remember_token',
     ];
 
     /**
@@ -38,5 +38,10 @@ class User extends Authenticatable
     public function getCreatedAtAttribute($value)
     {
         return Carbon::parse($value)->diffForHumans();
+    }
+
+    public function getRoleAttribute($value)
+    {
+        return $value === 1 ? '管理员' : '其他';
     }
 }
