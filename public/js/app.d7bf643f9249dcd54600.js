@@ -2514,10 +2514,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['title', 'user_id'],
@@ -2527,6 +2523,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
+    filters: {
+        capitalize: function capitalize(value) {
+            if (!value) return '';
+            value = value.toString();
+            return value.charAt(0).toUpperCase() + value.slice(1);
+        }
+    },
     methods: {
         prepareComponent: function prepareComponent() {
             this.getProfile();
@@ -2537,6 +2540,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/api/users/' + this.user_id).then(function (response) {
                 _this.user = response.data;
             });
+        },
+        showName: function showName(msg, event) {
+            if (event.type == 'click') {
+                console.log(msg + ': ' + this.user.name);
+            }
         }
     },
     ready: function ready() {
@@ -32643,9 +32651,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-heading"
   }, [_vm._v(_vm._s(_vm.title))]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
-  }, [(_vm.user.length === 0) ? _c('p', {
-    staticClass: "m-b-none"
-  }, [_vm._v("\n                You have not created any OAuth clients.\n            ")]) : _vm._e(), _vm._v(" "), _c('table', {
+  }, [_c('table', {
     staticClass: "table table-borderless m-b-none"
   }, [_vm._m(0), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', {
     staticStyle: {
@@ -32654,8 +32660,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n                        " + _vm._s(_vm.user.id) + "\n                    ")]), _vm._v(" "), _c('td', {
     staticStyle: {
       "vertical-align": "middle"
+    },
+    on: {
+      "click": function($event) {
+        _vm.showName('show user name', $event)
+      }
     }
-  }, [_vm._v("\n                        " + _vm._s(_vm.user.name) + "\n                    ")]), _vm._v(" "), _c('td', {
+  }, [_vm._v("\n                        " + _vm._s(_vm._f("capitalize")(_vm.user.name)) + "\n                    ")]), _vm._v(" "), _c('td', {
     staticStyle: {
       "vertical-align": "middle"
     }

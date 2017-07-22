@@ -17,6 +17,7 @@
                     <th>Role</th>
                     <th>Email</th>
                     <th>Created</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -45,6 +46,11 @@
                     <!-- Created at -->
                     <td style="vertical-align: middle;">
                         {{ $user->created_at }}
+                    </td>
+
+                    <!-- Operate -->
+                    <td style="vertical-align: middle;">
+                        <a href="{{ url('users/'.$user->id.'/edit') }}">Edit</a>
                     </td>
                 </tr>
                 @endforeach

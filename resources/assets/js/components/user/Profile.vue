@@ -7,10 +7,6 @@
             <div class="panel-heading">{{ title }}</div>
 
             <div class="panel-body">
-                <p class="m-b-none" v-if="user.length === 0">
-                    You have not created any OAuth clients.
-                </p>
-
                 <table class="table table-borderless m-b-none">
                     <thead>
                     <tr>
@@ -30,8 +26,8 @@
                         </td>
 
                         <!-- Name -->
-                        <td style="vertical-align: middle;">
-                            {{ user.name }}
+                        <td style="vertical-align: middle;" @click="showName('show user name', $event)">
+                            {{ user.name | capitalize }}
                         </td>
 
                         <!-- Role -->
@@ -64,6 +60,13 @@
                 user: [],
             };
         },
+        filters: {
+            capitalize: function (value) {
+                if (!value) return ''
+                value = value.toString()
+                return value.charAt(0).toUpperCase() + value.slice(1)
+            }
+        },
         methods: {
             prepareComponent() {
                 this.getProfile();
@@ -73,6 +76,11 @@
                     .then(response => {
                         this.user = response.data;
                     });
+            },
+            showName(msg, event) {
+                if(event.type == 'click'){
+                    console.log(msg+': '+this.user.name);
+                }
             }
         },
         ready() {

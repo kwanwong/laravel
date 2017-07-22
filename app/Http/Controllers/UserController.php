@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\User as User;
 
 class UserController extends Controller
@@ -58,7 +59,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('user.edit', ['user' => $user]);
     }
 
     /**
@@ -70,7 +72,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+        ]);
+
+        $name = $request->input('name');
+        DB::table('users')->where('id', $id)->update(compact('name'));
+
+        return redirect('users');
     }
 
     /**

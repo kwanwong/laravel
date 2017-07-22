@@ -9,7 +9,7 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/users/{id}', function ($id) {
+Route::get('users/{id}', function ($id) {
 //    $auth = Auth::check() ? 'Bearer '.Auth::user()->api_token : 'Bearer ';
 //    $request->header('Authorization', $auth);
     return App\User::find($id)->toJson();
