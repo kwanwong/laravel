@@ -178,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
 
+        \Szzmzb\Hasher\MD5HasherProvider::class,
     ],
 
     /*
