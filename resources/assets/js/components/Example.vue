@@ -1,5 +1,5 @@
 <style>
-    span.red { color: lightseagreen }
+    span.red { color: #990000 }
 </style>
 <template>
     <div>

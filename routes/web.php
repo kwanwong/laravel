@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 Route::resource('users', 'UserController');
 
+Route::get('posts', 'PostController@index');
+
 Route::group(['namespace' => 'Auth'], function () {
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login');

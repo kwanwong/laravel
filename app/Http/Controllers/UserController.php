@@ -15,8 +15,26 @@ class UserController extends Controller
      */
     public function index()
     {
+        $user = [
+            'id' => 10001,
+            'name' => 'Ken',
+            'age' => 28,
+            'phone' => '13824348627',
+            'address' => 'Canton',
+        ];
+        $fields = ['name', 'phone'];
+        array_walk($user, function($value, $key) use (&$result, $fields){
+            if(in_array($key, $fields)){
+                $result[$key] = $value;
+            }
+        });
+        var_dump($user);
+        var_dump($result);
+        exit;
+
+        $title = '用户列表';
         $users = User::orderby('created_at', 'desc')->paginate(15);
-        return view('user.list', ['title' => '用户信息', 'users' => $users]);
+        return view('user.list', compact('title', 'users'));
     }
 
     /**

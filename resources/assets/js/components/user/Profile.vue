@@ -1,10 +1,14 @@
-<style>
-
+<style scoped>
 </style>
 <template>
     <div>
         <div class="panel panel-default">
-            <div class="panel-heading">{{ title }}</div>
+            <div class="panel-heading">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>{{ title }}</span>
+                    <a v-bind:href="back" class="action-link" v-if="back">All</a>
+                </div>
+            </div>
 
             <div class="panel-body">
                 <table class="table table-borderless m-b-none">
@@ -54,7 +58,7 @@
 
 <script>
     export default {
-        props: ['title', 'user_id'],
+        props: ['title', 'user_id', 'back'],
         data() {
             return {
                 user: [],

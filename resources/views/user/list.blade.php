@@ -1,10 +1,10 @@
 @extends('layout')
-@section('title', '用户列表')
+@section('title', $title)
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span>用户列表</span>
+                <span>{{ $title }}</span>
                 <a href="{{ url('register') }}" class="action-link">{{ __('string.add') }}</a>
             </div>
         </div>
@@ -25,7 +25,7 @@
                 <tr>
                     <!-- ID -->
                     <td style="vertical-align: middle;">
-                        {{ $user->id }}
+                        <a href="{{ url('users/'.$user->id) }}">{{ $user->id }}</a>
                     </td>
 
                     <!-- Name -->
