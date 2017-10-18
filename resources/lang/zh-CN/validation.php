@@ -104,7 +104,13 @@ return [
             'rule-name' => 'custom-message',
         ],
         'title' => [
-            'required' => 'Title field is required'
+            'required' => '标题不能为空'
+        ],
+        'summary' => [
+            'required' => '导语不能为空'
+        ],
+        'content' => [
+            'required' => '文章内容不能为空'
         ]
     ],
 

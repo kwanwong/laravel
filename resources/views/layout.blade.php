@@ -29,6 +29,7 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="{{ url('/') }}">Home</a></li>
                     <li><a href="{{ url('users') }}">Users</a></li>
+                    <li><a href="{{ url('posts') }}">Posts</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::check())

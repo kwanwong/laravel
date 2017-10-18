@@ -14,4 +14,5 @@ return [
     'add_user' => 'Add User',
     'all' => 'All',
     'edit' => 'Edit',
+    'add_post' => 'Add Post',
 ];

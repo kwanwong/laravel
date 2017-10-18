@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Factory as Factory;
+use Carbon\Carbon;
 
 class PostsTableSeeder extends Seeder
 {
@@ -11,10 +13,21 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-//        DB::table('posts')->insert([
-//            'title' => 'this is article tile',
-//            'summary' => 'this is summary',
-//            'content' => 'the content of article',
-//        ]);
+        $data = [];
+        $faker = Factory::create();
+
+        for($i=0; $i<100; $i++){
+            $data[] = [
+                'title' => $faker->sentence,
+                'summary' => substr($faker->paragraph, 0, 250),
+                'thumb' => $faker->imageUrl(120, 120),
+                'content' => $faker->text,
+                'created_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ];
+        }
+        if(!empty($data) && is_array($data)){
+            DB::table('posts')->insert($data);
+        }
     }
 }
