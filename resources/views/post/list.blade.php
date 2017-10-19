@@ -20,7 +20,8 @@
                                 <a href="{{ url('posts/'.$post->id) }}" title="{{ $post->title }}">{{ $post->title }}</a>
                             </h4>
                             <p>{{ $post->content }}</p>
-                            <span class="glyphicon glyphicon-time small">{{ $post->created_at }}</span>
+                            <span class="glyphicon glyphicon-time small">{{ $post->created_at }}</span>&nbsp;|&nbsp;
+                            <span class="glyphicon glyphicon-star small">{{ $post->views }}</span>
                         </div>
                     </li>
                 @endforeach

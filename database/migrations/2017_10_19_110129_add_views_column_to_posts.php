@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddThumbColumnToPosts extends Migration
+class AddViewsColumnToPosts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddThumbColumnToPosts extends Migration
     public function up()
     {
         Schema::table('posts', function(Blueprint $table){
-            $table->string('thumb', 255)->after('summary')->default('')->comment('缩略图');
+            $table->integer('views', false, true)->after('content')->default(0)->comment('阅读数');
         });
     }
 
@@ -25,7 +25,7 @@ class AddThumbColumnToPosts extends Migration
     public function down()
     {
         Schema::table('posts', function(Blueprint $table){
-            $table->dropColumn('thumb');
+            $table->dropColumn('views');
         });
     }
 }
