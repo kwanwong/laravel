@@ -32,6 +32,10 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        // 添加sentry接收异常信息
+        if (app()->bound('sentry') && $this->shouldReport($exception)) {
+            app('sentry')->captureException($exception);
+        }
         parent::report($exception);
     }
 
