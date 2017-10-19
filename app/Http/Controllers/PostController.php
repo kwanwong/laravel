@@ -51,6 +51,7 @@ class PostController extends Controller
         // 队列延迟两分钟执行
         SendReminderEmail::dispatch($post)->delay(Carbon::now()->addMinutes(2));
 
+
         return redirect('posts');
     }
 
@@ -63,7 +64,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-
+        $post = Post::findOrFail($id);
+        $post->views = $post->views+1;
+        $post->save();
+        return view('post.detail', compact('post'));
     }
 
     /**
