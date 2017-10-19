@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Post as Post;
 use Illuminate\Support\Facades\Log;
+use App\Jobs\SendReminderEmail;
 
 class PostController extends Controller
 {
@@ -44,7 +46,10 @@ class PostController extends Controller
             'content' => 'required'
         ]);
 
-        Post::create($request->all());
+        $post = Post::create($request->all());
+
+        // 队列延迟两分钟执行
+        SendReminderEmail::dispatch($post)->delay(Carbon::now()->addMinutes(2));
 
         return redirect('posts');
     }
