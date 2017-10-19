@@ -34,6 +34,6 @@ class SendReminderEmail implements ShouldQueue
      */
     public function handle()
     {
-        Log::info('使用队列发送邮件...');
+        Log::info('使用队列发送邮件...'.$this->post->title);
     }
 }

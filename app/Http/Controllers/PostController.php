@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendReminderEmail;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Post as Post;
 use Illuminate\Support\Facades\Log;
@@ -44,7 +46,8 @@ class PostController extends Controller
             'content' => 'required'
         ]);
 
-        Post::create($request->all());
+        $post = Post::create($request->all());
+        SendReminderEmail::dispatch($post)->delay(Carbon::now()->addMinutes(5));
 
         return redirect('posts');
     }
