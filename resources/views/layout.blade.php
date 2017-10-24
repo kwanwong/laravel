@@ -47,5 +47,6 @@
     @yield('content')
 </div>
 <script src="{{ mix('/js/app.js') }}"></script>
+@yield('foot')
 </body>
 </html>
