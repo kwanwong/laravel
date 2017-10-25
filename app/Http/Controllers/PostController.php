@@ -20,6 +20,7 @@ class PostController extends Controller
     {
         $title = '文章列表';
         $posts = $this->post->paginate(10);
+
         return view('post.list', compact('title', 'posts'));
     }
 
