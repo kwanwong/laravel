@@ -4,16 +4,23 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Post as Post;
-use Illuminate\Support\Facades\Log;
 use App\Jobs\SendReminderEmail;
+use Repository\Eloquent\PostRepository;
 
 class PostController extends Controller
 {
+    private $post;
+
+    public function __construct(PostRepository $post)
+    {
+        $this->post = $post;
+    }
+
     public function index()
     {
         $title = '文章列表';
-        $posts = Post::orderby('created_at', 'desc')->paginate(10);
+        $posts = $this->post->paginate(10);
+
         return view('post.list', compact('title', 'posts'));
     }
 
@@ -46,11 +53,10 @@ class PostController extends Controller
             'content' => 'required'
         ]);
 
-        $post = Post::create($request->all());
+        $post = $this->post->create($request->all());
 
         // 队列延迟两分钟执行
         SendReminderEmail::dispatch($post)->delay(Carbon::now()->addMinutes(2));
-
 
         return redirect('posts');
     }
@@ -64,7 +70,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::findOrFail($id);
+        $post = $this->post->find($id);
         $post->views = $post->views+1;
         $post->save();
         return view('post.detail', compact('post'));
@@ -104,6 +110,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        
+        $this->post->delete($id);
+
+        return response()->json([
+            'code' => 200,
+            'msg' => '文章'.$id.'已成功删除',
+        ]);
     }
 }

@@ -20,6 +20,8 @@ Route::resource('users', 'UserController');
 
 Route::resource('posts', 'PostController');
 
+Route::get('collection/{name?}', 'CollectionController@index');
+
 Route::group(['namespace' => 'Auth'], function () {
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login');
