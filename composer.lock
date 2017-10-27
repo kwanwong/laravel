@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7b8a01165a8b32f33266142a3d8e93d7",
-    "content-hash": "89ebcfdc72831776b9e893a05b29a64d",
+    "hash": "02b3c750c1f1d4f2954edff000a5b866",
+    "content-hash": "6d7b56ca8bcc520d0d5734f551ab5c5d",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -78,7 +78,7 @@
                 "phpstorm",
                 "sublime"
             ],
-            "time": "2017-07-16T00:24:12+00:00"
+            "time": "2017-07-16 00:24:12"
         },
         {
             "name": "barryvdh/reflection-docblock",
@@ -127,7 +127,7 @@
                     "email": "mike.vanriel@naenius.com"
                 }
             ],
-            "time": "2016-06-13T19:28:20+00:00"
+            "time": "2016-06-13 19:28:20"
         },
         {
             "name": "defuse/php-encryption",
@@ -1841,16 +1841,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.8.12",
+            "version": "v0.8.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "1502354ebc70d59d8e3a87c325b0eb78a79da25b"
+                "reference": "cdb5593c3684bab74e10fcfffe4a0c8d1c39695d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/bobthecow/psysh/1502354ebc70d59d8e3a87c325b0eb78a79da25b.zip",
-                "reference": "1502354ebc70d59d8e3a87c325b0eb78a79da25b",
+                "url": "https://files.phpcomposer.com/files/bobthecow/psysh/cdb5593c3684bab74e10fcfffe4a0c8d1c39695d.zip",
+                "reference": "cdb5593c3684bab74e10fcfffe4a0c8d1c39695d",
                 "shasum": ""
             },
             "require": {
@@ -1910,7 +1910,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-10-14 17:14:13"
+            "time": "2017-10-19 06:13:20"
         },
         {
             "name": "ramsey/uuid",
@@ -2057,7 +2057,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2017-08-02T16:38:25+00:00"
+            "time": "2017-08-02 16:38:25"
         },
         {
             "name": "sentry/sentry-laravel",
@@ -2120,7 +2120,7 @@
                 "logging",
                 "sentry"
             ],
-            "time": "2017-08-11T17:29:14+00:00"
+            "time": "2017-08-11 17:29:14"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2231,7 +2231,7 @@
             ],
             "description": "Symfony ClassLoader Component",
             "homepage": "https://symfony.com",
-            "time": "2017-10-02T06:42:24+00:00"
+            "time": "2017-10-02 06:42:24"
         },
         {
             "name": "symfony/console",
