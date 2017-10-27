@@ -8,6 +8,7 @@ class CollectionController extends Controller
 {
     private $oneDimensionNumber;
     private $oneDimensionString;
+    private $oneDimensionKeyValue;
     private $twoDimensions;
     private $data = [];
 
@@ -15,6 +16,12 @@ class CollectionController extends Controller
     {
         $this->oneDimensionNumber = range(1, 100);
         $this->oneDimensionString = ['Jackie Brown', 'Foo', 'Bar', '', null];
+        $this->oneDimensionKeyValue = [
+            'name' => 'Tom',
+            'email' => 'tom@example.com',
+            'age' => 30,
+            'active' => 1
+        ];
 
         $this->twoDimensions = [
             [
@@ -30,6 +37,13 @@ class CollectionController extends Controller
                 'credits' => 1000,
                 'active' => 0,
                 'created_at' => '2017-10-25 09:00:00',
+            ],
+            [
+                'name' => 'Tom',
+                'email' => 'tom@example.com',
+                'credits' => 2000,
+                'active' => 0,
+                'created_at' => '2017-10-27 09:00:00',
             ]
         ];
     }
@@ -110,6 +124,15 @@ class CollectionController extends Controller
     }
 
     /**
+     * 判断给定的键是否在集合中
+     */
+    protected function has()
+    {
+        $isKeyExist = collect($this->oneDimensionKeyValue)->has('email');
+        dd($isKeyExist);
+    }
+
+    /**
      * 返回集合中所有项的总数
      */
     protected function count()
@@ -159,6 +182,116 @@ class CollectionController extends Controller
     {
         $filtered = collect($this->twoDimensions)->only([1]);
         dd($filtered->all());
+    }
+
+    /**
+     * 返回通过集合真理测试的第一个元素
+     */
+    protected function first()
+    {
+        $filtered = collect($this->oneDimensionNumber)->first(function($value){
+            return $value > 30;
+        });
+        dd($filtered);
+    }
+
+    /**
+     * 返回通过集合真理测试的最后一个元素
+     */
+    protected function last()
+    {
+        $filtered = collect($this->oneDimensionNumber)->last(function($value){
+            return $value > 30;
+        });
+        dd($filtered);
+    }
+
+    /**
+     * 交换集合的键值,返回一个新的集合
+     */
+    protected function flip()
+    {
+        $flipped = collect($this->oneDimensionNumber)->flip();
+        dd($flipped->all());
+    }
+
+    /**
+     * 连接集合中的数据项
+     */
+    protected function implode()
+    {
+        $collection = collect($this->twoDimensions)->implode('name', ',');
+        dd($collection);
+    }
+
+    /**
+     * 为给定键获取所有集合值
+     * 第二个参数可选，指定如何设置键
+     */
+    protected function pluck()
+    {
+        $collection = collect($this->twoDimensions)->pluck('name', 'email');
+        dd($collection->all());
+    }
+
+    /**
+     * 检测给定的集合是否为空
+     */
+    protected function isEmpty()
+    {
+        $checkIsEmpty = collect($this->oneDimensionNumber)->isEmpty();
+        dd($checkIsEmpty);
+    }
+
+    /**
+     * 配合list方法，可以将通过真理测试和未通过真理测试的值分开
+     */
+    protected function partition()
+    {
+        list($activeList, $inActiveList) = collect($this->twoDimensions)->partition(function($item){
+            return $item['active'];
+        });
+        dump($activeList->all());
+        dump($inActiveList->all());
+    }
+
+    /**
+     * 返回集合的所有键值
+     */
+    protected function keys()
+    {
+        $keys = collect($this->oneDimensionKeyValue)->keys();
+        dd($keys->all());
+    }
+
+    /**
+     * 移除并返回集合中最后一个数据项
+     */
+    protected function pop()
+    {
+        $collection = collect($this->oneDimensionString);
+        dump($collection->pop());
+        dump($collection->all());
+    }
+
+    /**
+     * 在集合中设置给定键个值
+     */
+    protected function put()
+    {
+        $collection = collect($this->oneDimensionKeyValue)->put('addFiled', 'addValue');
+        dd($collection->all());
+    }
+
+    /**
+     * 数组转化为单一值
+     */
+    public function reduce()
+    {
+        $reduced = collect($this->oneDimensionKeyValue)->reduce(function($carry, $value){
+            return $carry . ', ' .$value;
+        }, 'user info: ');
+        dd($reduced);
     }
 
     public function __call($method = '', $args = [])
