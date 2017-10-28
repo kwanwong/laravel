@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AddPost;
+use App\Events\DeletePost;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Jobs\SendReminderEmail;
@@ -54,6 +56,9 @@ class PostController extends Controller
         ]);
 
         $post = $this->post->create($request->all());
+
+        // 调用文章添加事件
+        event(new AddPost($post));
 
         // 队列延迟两分钟执行
         SendReminderEmail::dispatch($post)->delay(Carbon::now()->addMinutes(2));
