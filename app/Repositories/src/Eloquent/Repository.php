@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
 abstract class Repository implements RepositoryInterface
 {
     private $app;
-    protected  $model;
+    protected $model;
 
     public function __construct(App $app)
     {

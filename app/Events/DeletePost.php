@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Post;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -19,7 +20,7 @@ class DeletePost
     /**
      * Create a new event instance.
      *
-     * @return void
+     * @param Post $post
      */
     public function __construct(Post $post)
     {
