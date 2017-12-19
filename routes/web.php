@@ -30,6 +30,11 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::post('register', 'RegisterController@register');
 });
 
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::get('login', 'LoginController@showLoginForm')->name('login');
+    Route::post('login', 'LoginController@login');
+});
+
 // 授权重定向
 Route::get('/redirect', function () {
     $query = http_build_query([
