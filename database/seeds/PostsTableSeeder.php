@@ -16,8 +16,11 @@ class PostsTableSeeder extends Seeder
         $data = [];
         $faker = Factory::create();
 
+        $userIds = DB::table('users')->pluck('id')->toArray();
+
         for($i=0; $i<100; $i++){
             $data[] = [
+                'user_id' => array_rand($userIds),
                 'title' => $faker->sentence,
                 'summary' => substr($faker->paragraph, 0, 250),
                 'thumb' => $faker->imageUrl(120, 120),

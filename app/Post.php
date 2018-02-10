@@ -35,4 +35,9 @@ class Post extends Model
     {
         $this->attributes['updated_at'] = !empty($value) ? $value : time();
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

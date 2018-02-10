@@ -15,3 +15,16 @@ Route::get('users/{id}', function ($id) {
     return App\User::find($id)->toJson();
 });
 
+Route::get('users/{id}/posts', function ($id) {
+    return App\User::find($id)->posts->toJson();
+});
+
+Route::delete('posts/{post_id}', function ($id) {
+    $count = App\Post::destroy($id);
+
+    return collect([
+        'code' => 200,
+        'message' => '成功删除'.$count.'条记录',
+    ])->toJson();
+});
+

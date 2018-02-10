@@ -44,4 +44,9 @@ class User extends Authenticatable
     {
         return $value === 1 ? '管理员' : '其他';
     }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
 }

@@ -37,6 +37,11 @@ Vue.component(
     require('./components/user/Profile.vue')
 );
 
+Vue.component(
+    'post-list',
+    require('./components/post/List.vue')
+);
+
 const app = new Vue({
     el: '#app'
 });

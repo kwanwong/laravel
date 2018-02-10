@@ -49,7 +49,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('user.profile', ['title' => '用户信息', 'user' => User::find($id)]);
+        $user = User::find($id);
+        return view('user.profile', ['title' => '用户信息', 'user' => $user]);
     }
 
     /**
